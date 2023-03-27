@@ -1,0 +1,74 @@
+﻿@model IEnumerable<EmployeeManagementtt.ViewModel.EmployeeApiViewModel>
+@{
+    ViewData["Title"] = "GetEmployees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Get Employees</h1>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhotoPath)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Gender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateOfBirth)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DepartmentID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhotoPath)
+    </td>
+    <td>
+        @Html.ActionLink("View", "GetEmployee", new { id = item.EmployeeID }) |
+        @Html.ActionLink("Edit", "EditAPI", new { id = item.EmployeeID }) |
+        @Html.ActionLink("Delete", "DeleteAPI", new { id = item.EmployeeID })
+    </td>
+
+</tr>
+    }
+    <tr>
+        <td>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+
+</table>
